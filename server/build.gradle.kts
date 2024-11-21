@@ -1,12 +1,8 @@
-plugins {
-    kotlin("jvm") version "1.9.21"
-}
-
-group = "org.example"
+group = "com"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+plugins {
+    kotlin("jvm") version "1.9.21"
 }
 
 dependencies {
@@ -15,7 +11,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(21)
 }

@@ -1,21 +1,15 @@
-plugins {
-    kotlin("jvm") version "1.9.21"
-}
-
-group = "org.example"
+group = "com"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+plugins {
+    id("com.soywiz.korge") version korlibs.korge.gradle.common.KorgeGradlePluginVersion.VERSION
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    commonTestImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(21)
+korge {
+    id = "com.client.game"
+    targetJvm()
 }

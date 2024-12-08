@@ -1,8 +1,6 @@
 package com.game.client.movable
 
-import com.game.client.Destroyable
-
-interface Controllable: Destroyable {
+interface Controllable {
     fun turn(moment: Double)
 
     fun grow()

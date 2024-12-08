@@ -1,33 +1,32 @@
 package com.game.client.movable.snake
 
-import com.game.client.Destroyable
-import korlibs.korge.view.Circle
-import korlibs.korge.view.SContainer
-import korlibs.korge.view.circle
+import KR
+import korlibs.image.bitmap.*
+import korlibs.korge.render.BatchBuilder2D
+import korlibs.korge.render.RenderContext
+import kotlinx.coroutines.runBlocking
 
 class SnakeSegment(
-    scene: SContainer,
     private val size: Double,
     private val trajectory: SnakeTrajectory,
-    val position: Double
-): Destroyable {
-    private val circle: Circle
+    val snakePosition: Double
+) {
+    private var position = trajectory.position(snakePosition)
 
-    init {
-        scene.run {
-            circle = circle {
-                radius = this@SnakeSegment.size
-            }
-        }
-    }
-
-    override fun destroy() {
-        circle.removeFromParent()
+    fun render(ctx: RenderContext, batcher: BatchBuilder2D) {
+        val size = size.toFloat()
+        batcher.drawQuad(
+            ctx.getTex(circleBitmap),
+            x = position.x.toFloat(), y = position.y.toFloat(),
+            width = size, height = size
+        )
     }
 
     fun update() {
-        val position = trajectory.position(position)
-        circle.x = position.x
-        circle.y = position.y
+        position = trajectory.position(snakePosition)
+    }
+
+    companion object {
+        private val circleBitmap = runBlocking { KR.circle.readSlice() }
     }
 }

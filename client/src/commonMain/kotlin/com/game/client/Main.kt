@@ -3,7 +3,6 @@ package com.game.client
 import com.game.client.controll.LocalControl
 import com.game.client.controll.LocalControl.Companion.localControl
 import com.game.client.movable.snake.Snake
-import com.game.client.movable.snake.Snake.Companion.snake
 import korlibs.time.*
 import korlibs.korge.*
 import korlibs.korge.scene.*
@@ -27,7 +26,8 @@ class MyScene : Scene() {
         addUpdater { deltaTime ->
             if (launched.get()) update(deltaTime.milliseconds)
         }
-        val snake = snake(Vector2D(100, 100))
+        val snake = Snake(Vector2D(100, 100))
+        addChild(snake)
         snakes.add(snake)
         control = localControl(snake)
     }

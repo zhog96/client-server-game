@@ -1,22 +1,22 @@
 package com.game.client.movable.snake
 
 import com.game.client.movable.Controllable
-import korlibs.korge.view.SContainer
+import korlibs.korge.render.RenderContext
+import korlibs.korge.view.View
 import korlibs.math.geom.Angle
 import korlibs.math.geom.Vector2D
 import korlibs.math.geom.degrees
 
 class Snake(
-    private val scene: SContainer,
     private var position: Vector2D
-) : Controllable {
-    private var speed: Double = 0.2
-    private val size: Double = 30.0
+) : Controllable, View() {
+    private var snakeSpeed: Double = 0.2
+    private val segmentSize: Double = 60.0
     private var direction: Angle = 0.degrees
     private var moment: Double = 0.0
     private val segments = mutableListOf<SnakeSegment>()
     private var length: Double = 0.0
-    private val trajectory = SnakeTrajectory(position).also { scene.addChild(it) }
+    private val trajectory = SnakeTrajectory(position)
 
     init {
         createHead()
@@ -25,7 +25,7 @@ class Snake(
 
     fun update(deltaTime: Double) {
         direction += (moment * deltaTime).degrees
-        position += Vector2D(direction.cosine, direction.sine) * speed * deltaTime
+        position += Vector2D(direction.cosine, direction.sine) * snakeSpeed * deltaTime
         trajectory.update(length, position)
         segments.forEach { it.update() }
     }
@@ -38,29 +38,26 @@ class Snake(
         addBodySegment()
     }
 
-    override fun destroy() {
-        segments.forEach { it.destroy() }
-        scene.removeChild(trajectory)
+    override fun renderInternal(ctx: RenderContext) {
+        ctx.useBatcher { batcher ->
+            segments.forEach { it.render(ctx, batcher) }
+        }
+//        trajectory.render(ctx)
     }
 
     private fun createHead() {
-        segments.add(SnakeSegment(scene, size, trajectory, 0.0))
+        segments.add(SnakeSegment(segmentSize, trajectory, 0.0))
     }
 
     private fun addBodySegment() {
         val parent = segments.last()
         segments.add(
             SnakeSegment(
-                scene,
-                size,
+                segmentSize,
                 trajectory,
-                parent.position + size
+                parent.snakePosition + segmentSize / 2
             )
         )
-        length += size
-    }
-
-    companion object {
-        fun SContainer.snake(position: Vector2D) = Snake(this, position)
+        length += segmentSize / 2
     }
 }

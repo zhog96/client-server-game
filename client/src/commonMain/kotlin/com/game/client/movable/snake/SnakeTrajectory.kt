@@ -2,14 +2,13 @@ package com.game.client.movable.snake
 
 import korlibs.korge.render.RenderContext
 import korlibs.korge.render.useLineBatcher
-import korlibs.korge.view.View
 import korlibs.math.geom.Vector2D
 import korlibs.math.toIntFloor
 import kotlin.math.roundToInt
 
 class SnakeTrajectory(
     position: Vector2D
-): View()  {
+) {
     private val edgeSize = 10.0
 
     private val points = ArrayDeque<Vector2D>()
@@ -54,7 +53,7 @@ class SnakeTrajectory(
     }
 
     private fun trim(length: Double) {
-        val firstEdgeLength = firstEdgeLength
+        val  firstEdgeLength = firstEdgeLength
         val innerEdgesLength = innerEdgesLength
         val lastEdgeLength = lastEdgeLength
         var lengthToTrim = firstEdgeLength + innerEdgesLength + lastEdgeLength - length
@@ -73,8 +72,7 @@ class SnakeTrajectory(
     private val innerEdgesLength get() = (points.size - 3) * edgeSize
     private val lastEdgeLength get() = (points[points.size - 1] - points[points.size - 2]).length
 
-    override fun renderInternal(ctx: RenderContext) {
-        return
+    fun render(ctx: RenderContext) {
         ctx.useLineBatcher { batcher ->
             (0..points.size - 2).forEach {
                 batcher.line(

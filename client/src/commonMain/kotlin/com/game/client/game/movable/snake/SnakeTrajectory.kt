@@ -1,4 +1,4 @@
-package com.game.client.movable.snake
+package com.game.client.game.movable.snake
 
 import korlibs.korge.render.RenderContext
 import korlibs.korge.render.useLineBatcher

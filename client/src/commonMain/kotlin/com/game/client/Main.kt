@@ -1,43 +1,14 @@
 package com.game.client
 
-import com.game.client.controll.LocalControl
-import com.game.client.controll.LocalControl.Companion.localControl
-import com.game.client.movable.snake.Snake
-import korlibs.time.*
-import korlibs.korge.*
-import korlibs.korge.scene.*
-import korlibs.korge.view.*
-import korlibs.image.color.*
-import korlibs.math.geom.*
-import java.util.concurrent.atomic.AtomicBoolean
+import com.game.client.scene.SnakeScene
+import korlibs.image.color.Colors
+import korlibs.korge.Korge
+import korlibs.korge.scene.sceneContainer
+import korlibs.math.geom.Size
 
-suspend fun main() = Korge(windowSize = Size(1024, 768), backgroundColor = Colors["#2b2b2b"]) {
-    val sceneContainer = sceneContainer()
-
-    sceneContainer.changeTo { MyScene() }
-}
-
-class MyScene : Scene() {
-    private val launched = AtomicBoolean(false)
-    private val snakes = ArrayList<Snake>()
-    private lateinit var control: LocalControl
-
-    override suspend fun SContainer.sceneInit() {
-        addUpdater { deltaTime ->
-            if (launched.get()) update(deltaTime.milliseconds)
-        }
-        val snake = Snake(Vector2D(100, 100))
-        addChild(snake)
-        snakes.add(snake)
-        control = localControl(snake)
-    }
-
-    override suspend fun SContainer.sceneMain() {
-        launched.set(true)
-    }
-
-    private fun update(deltaTime: Double) {
-        control.update()
-        snakes.forEach { it.update(deltaTime) }
+suspend fun main() {
+    Korge(windowSize = Size(1024, 768), backgroundColor = Colors["#2b2b2b"]) {
+        val sceneContainer = sceneContainer()
+        sceneContainer.changeTo { SnakeScene() }
     }
 }

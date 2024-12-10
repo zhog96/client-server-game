@@ -1,6 +1,6 @@
-package com.game.client.movable.snake
+package com.game.client.game.movable.snake
 
-import com.game.client.movable.Controllable
+import com.game.client.game.movable.Controllable
 import korlibs.korge.render.RenderContext
 import korlibs.korge.view.View
 import korlibs.math.geom.Angle

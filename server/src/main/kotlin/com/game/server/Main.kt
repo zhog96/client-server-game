@@ -1,5 +1,11 @@
 package com.game.server
 
+import io.ktor.server.engine.*
+import io.ktor.server.cio.*
+
 fun main() {
-    println("Hello World!")
+    embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
+        configureHTTP()
+        configureSockets()
+    }.start(wait = true)
 }

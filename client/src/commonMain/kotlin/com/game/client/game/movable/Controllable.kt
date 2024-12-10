@@ -1,4 +1,4 @@
-package com.game.client.movable
+package com.game.client.game.movable
 
 interface Controllable {
     fun turn(moment: Double)

@@ -40,20 +40,10 @@ fun Application.configureSockets() {
 
     val playerConnections = ConcurrentHashMap<Int, PlayerConnection>()
 
-    launch {
-        while(true) {
-            playerConnections.forEach { (id, connection) ->
-                runCatching { connection.session.send("$id ^^ ${nanoTime()}") }
-            }
-            delay(1000)
-        }
-    }
-
     routing {
         webSocket("/") {
             val playerConnection = PlayerConnection(this)
             playerConnections[playerConnection.id] = playerConnection
-            println("Added player connection: $playerConnection")
             try {
                 for (frame in incoming) {
                 }

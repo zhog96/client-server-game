@@ -1,4 +1,4 @@
-package com.game.client.game.controll
+package com.game.client.scene
 
 import com.game.client.game.movable.Controllable
 import com.game.client.ktorwebclient.ktorWebSocketClient
@@ -6,7 +6,7 @@ import com.game.client.ktorwebclient.ktorWebSocketJob
 import korlibs.event.Key
 import korlibs.korge.scene.Scene
 
-class LocalControl(
+class WebControl(
     private val scene: Scene,
     private val controllable: Controllable
 ) {
@@ -24,6 +24,6 @@ class LocalControl(
     }
 
     companion object {
-        fun Scene.localControl(controllable: Controllable) = LocalControl(this, controllable)
+        fun Scene.localControl(controllable: Controllable) = WebControl(this, controllable)
     }
 }

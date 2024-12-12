@@ -1,18 +1,15 @@
 package com.game.client.game.movable.snake
 
 import KR
-import korlibs.image.bitmap.*
 import korlibs.korge.render.BatchBuilder2D
 import korlibs.korge.render.RenderContext
+import korlibs.math.geom.Vector2D
 import kotlinx.coroutines.runBlocking
 
 class SnakeSegment(
-    private val size: Double,
-    private val trajectory: SnakeTrajectory,
-    val snakePosition: Double
+    var size: Double,
+    var position: Vector2D
 ) {
-    private var position = trajectory.position(snakePosition)
-
     fun render(ctx: RenderContext, batcher: BatchBuilder2D) {
         val size = size.toFloat()
         batcher.drawQuad(
@@ -20,10 +17,6 @@ class SnakeSegment(
             x = position.x.toFloat(), y = position.y.toFloat(),
             width = size, height = size
         )
-    }
-
-    fun update() {
-        position = trajectory.position(snakePosition)
     }
 
     companion object {

@@ -2,19 +2,18 @@ group = "com"
 version = "1.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "1.9.21"
+    id("com.soywiz.korge") version korlibs.korge.gradle.common.KorgeGradlePluginVersion.VERSION
 }
 
 val ktorVersion: String by project
 
 dependencies {
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
-    implementation("io.ktor:ktor-server-core:$ktorVersion")
-    implementation("io.ktor:ktor-websockets:$ktorVersion")
-    implementation("io.ktor:ktor-server-cio:$ktorVersion")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-}
-
-tasks.test {
-    useJUnitPlatform()
+    commonMainImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
+    commonMainImplementation("io.ktor:ktor-server-core:$ktorVersion")
+    commonMainImplementation("io.ktor:ktor-websockets:$ktorVersion")
+    commonMainImplementation("io.ktor:ktor-server-cio:$ktorVersion")
+    commonMainImplementation("com.fasterxml.jackson.core:jackson-core:2.10.1")
+    commonMainImplementation("com.fasterxml.jackson.core:jackson-annotations:2.10.1")
+    commonMainImplementation("com.fasterxml.jackson.core:jackson-databind:2.10.1")
+    commonTestImplementation("org.jetbrains.kotlin:kotlin-test")
 }

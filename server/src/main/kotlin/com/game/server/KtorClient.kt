@@ -56,16 +56,6 @@ fun Application.configureSockets() {
             println("Added player connection: $playerConnection")
             try {
                 for (frame in incoming) {
-                    when (frame) {
-                        is Frame.Text -> {
-                            val text = frame.readText()
-                            println("Got frame: $text")
-                        }
-                        is Frame.Binary -> TODO()
-                        is Frame.Close -> TODO()
-                        is Frame.Ping -> TODO()
-                        is Frame.Pong -> TODO()
-                    }
                 }
             } catch (e: Exception) {
                 println(e.localizedMessage)

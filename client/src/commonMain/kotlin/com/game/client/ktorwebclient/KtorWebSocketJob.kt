@@ -7,19 +7,8 @@ import kotlinx.coroutines.launch
 fun ktorWebSocketJob(): suspend DefaultClientWebSocketSession.() -> Unit = {
     try {
         launch {
-            for (message in incoming) {
-                println("Received frame!")
-                when (message) {
-                    is Frame.Binary -> TODO()
-                    is Frame.Text -> {
-                        val text = message.readText()
-                        println("Got message: $text")
-                    }
-
-                    is Frame.Close -> TODO()
-                    is Frame.Ping -> TODO()
-                    is Frame.Pong -> TODO()
-                }
+            for (frame in incoming) {
+                println("Got message: ${frame.data.decodeToString()}")
             }
         }.join()
     } catch (e: Exception) {

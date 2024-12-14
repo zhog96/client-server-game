@@ -1,6 +1,3 @@
-group = "com"
-version = "1.0-SNAPSHOT"
-
 plugins {
     id("com.soywiz.korge") version korlibs.korge.gradle.common.KorgeGradlePluginVersion.VERSION
 }
@@ -15,6 +12,4 @@ dependencies {
     commonMainImplementation("com.fasterxml.jackson.core:jackson-core:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.core:jackson-annotations:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.core:jackson-databind:2.10.1")
-    commonMainImplementation(project(":multiplayer"))
-    commonTestImplementation("org.jetbrains.kotlin:kotlin-test")
 }

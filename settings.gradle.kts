@@ -11,6 +11,7 @@ rootProject.name = "game"
 
 include(
     "client",
-    "server"
+    "server",
+    "multiplayer"
 )
 

@@ -24,6 +24,6 @@ class WebControl(
     }
 
     companion object {
-        fun Scene.localControl(controllable: Controllable) = WebControl(this, controllable)
+        fun Scene.control(controllable: Controllable) = WebControl(this, controllable)
     }
 }

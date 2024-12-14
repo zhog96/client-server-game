@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="multiplayer-jvm">
+    <output-path>$PROJECT_DIR$/multiplayer/build/libs</output-path>
+    <root id="archive" name="multiplayer-jvm.jar">
+      <element id="module-output" name="game.multiplayer.jvmMain" />
+    </root>
+  </artifact>
+</component>

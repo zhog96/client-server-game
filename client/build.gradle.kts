@@ -14,6 +14,7 @@ dependencies {
     commonMainImplementation("com.fasterxml.jackson.core:jackson-annotations:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.core:jackson-databind:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.1")
+    commonMainImplementation(project(":multiplayer"))
     jvmMainApi("io.ktor:ktor-client-cio:$ktorVersion")
     commonTestImplementation("org.jetbrains.kotlin:kotlin-test")
 }

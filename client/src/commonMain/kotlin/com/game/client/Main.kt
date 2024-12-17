@@ -1,6 +1,7 @@
 package com.game.client
 
 import com.game.client.scene.SnakeScene
+import com.game.multiplayer.ClientPlayer
 import korlibs.image.color.Colors
 import korlibs.korge.Korge
 import korlibs.korge.scene.sceneContainer

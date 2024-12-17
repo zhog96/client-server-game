@@ -1,4 +1,10 @@
 pluginManagement {
+    val kspVersion: String by settings
+
+    plugins {
+        id("com.google.devtools.ksp") version kspVersion
+    }
+
     repositories { mavenLocal(); mavenCentral(); google(); gradlePluginPortal() }
 }
 
@@ -12,6 +18,7 @@ rootProject.name = "game"
 include(
     "client",
     "server",
-    "multiplayer"
+    "multiplayer",
+    "multiplayer:processor"
 )
 

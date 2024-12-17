@@ -2,7 +2,7 @@ package com.game.client.scene
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.game.client.ktorwebclient.ktorWebSocketClient
+import com.game.multiplayer.ktorwebclient.ktorWebSocketClient
 import com.game.client.scene.model.WebSnakeState
 import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.delay

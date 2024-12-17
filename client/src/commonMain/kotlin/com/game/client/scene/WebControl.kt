@@ -1,8 +1,8 @@
 package com.game.client.scene
 
 import com.game.client.game.movable.Controllable
-import com.game.client.ktorwebclient.ktorWebSocketClient
-import com.game.client.ktorwebclient.ktorWebSocketJob
+import com.game.multiplayer.ktorwebclient.ktorWebSocketClient
+import com.game.multiplayer.ktorwebclient.ktorWebSocketJob
 import korlibs.event.Key
 import korlibs.korge.scene.Scene
 

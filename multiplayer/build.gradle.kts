@@ -15,6 +15,8 @@ dependencies {
     commonMainImplementation("com.fasterxml.jackson.core:jackson-core:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.core:jackson-annotations:2.10.1")
     commonMainImplementation("com.fasterxml.jackson.core:jackson-databind:2.10.1")
+    commonMainImplementation("io.ktor:ktor-client-websockets:$ktorVersion")
+    jvmMainApi("io.ktor:ktor-client-cio:$ktorVersion")
     commonMainImplementation(project(":multiplayer:processor"))
     kspJvm(project(":multiplayer:processor"))
 }

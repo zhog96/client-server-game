@@ -1,6 +1,6 @@
-package com.game.client.ktorwebclient
+package com.game.multiplayer.ktorwebclient
 
-import com.game.client.ktorwebclient.KtorWebSocketClient.client
+import com.game.multiplayer.ktorwebclient.KtorWebSocketClient.client
 import io.ktor.client.features.websocket.*
 import io.ktor.http.*
 import korlibs.io.async.launch

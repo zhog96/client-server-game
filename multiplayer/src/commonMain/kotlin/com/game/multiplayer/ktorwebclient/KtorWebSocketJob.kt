@@ -1,4 +1,4 @@
-package com.game.client.ktorwebclient
+package com.game.multiplayer.ktorwebclient
 
 import io.ktor.client.features.websocket.*
 import io.ktor.http.cio.websocket.*

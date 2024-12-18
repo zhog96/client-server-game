@@ -1,19 +1,21 @@
 package com.game.multiplayer.client
 
-import com.game.multiplayer.connect.Connect
-import com.game.multiplayer.connect.ConnectedEntity
-import com.game.multiplayer.connect.EntitiesState
+import com.game.multiplayer.state.EntitiesState
+import kotlinx.coroutines.delay
 
 class ClientConnect(
     private val serverApi: ServerApi
-): Connect {
-    val localState: EntitiesState = EntitiesState()
+) {
+    private val localState: EntitiesState = EntitiesState()
 
-    override fun register(entity: ConnectedEntity) {
-        TODO("Not yet implemented")
+    suspend fun connect() {
+        while (true) {
+            sync()
+            delay(100)
+        }
     }
 
-    override fun sync() {
-        TODO("Not yet implemented")
+    private fun sync() {
+        localState.set(serverApi.serverState())
     }
 }

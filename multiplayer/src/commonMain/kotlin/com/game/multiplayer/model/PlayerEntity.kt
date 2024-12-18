@@ -1,4 +1,4 @@
-package com.game.multiplayer
+package com.game.multiplayer.model
 
 import com.game.multiplayer.processor.Synchronized
 import korlibs.math.geom.Vector2D

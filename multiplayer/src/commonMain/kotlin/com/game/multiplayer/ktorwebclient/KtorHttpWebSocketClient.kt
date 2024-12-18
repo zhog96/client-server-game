@@ -23,6 +23,6 @@ class KtorHttpWebSocketClient(
     }
 
     companion object {
-        private val webSocketDispatcher by lazy { ForkJoinPool(3).asCoroutineDispatcher() }
+        val webSocketDispatcher by lazy { ForkJoinPool(3).asCoroutineDispatcher() }
     }
 }

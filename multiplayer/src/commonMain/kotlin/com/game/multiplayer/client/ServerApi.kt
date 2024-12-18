@@ -1,7 +1,7 @@
 package com.game.multiplayer.client
 
-import com.game.multiplayer.connect.Action
-import com.game.multiplayer.connect.EntitiesState
+import com.game.multiplayer.state.Action
+import com.game.multiplayer.state.EntitiesState
 
 interface ServerApi {
     fun serverState(): EntitiesState
